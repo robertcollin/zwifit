@@ -43,13 +43,14 @@ exports.start = () => {
 		// socket.on('disconnect', () => {});
 	});
 
-	// setInterval(
-	// 	() => io.emit('message', { event: 'current', data: current }),
-	// 	1000
-	// );
+	setInterval(
+		() => io.emit('message', { event: 'current', data: current }),
+	 	1000
+	 );
 	events.on('changeReceived', changes => {
 		io.emit('message', { event: 'change', data: changes });
 		io.emit('message', { event: 'current', data: current });
+		console.log('Speed change detected');
 	});
 
 	let port = 1337;
